@@ -1,14 +1,10 @@
+import { container } from "./main.css";
 import { ReactNode } from "react";
 
-type Props = {
-  children: ReactNode;
-  modal: ReactNode;
-};
-
+type Props = { children: ReactNode; modal: ReactNode };
 export default function Layout({ children, modal }: Props) {
   return (
-    <div>
-      Before login layout
+    <div className={container}>
       {children}
       {modal}
     </div>
