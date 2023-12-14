@@ -1,7 +1,6 @@
 "use client";
 
-import style from "@/app/(beforeLogin)/_component/login.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   actionButton,
   closeButton,
@@ -12,20 +11,24 @@ import {
   modalBackground,
   modalBody,
   modalFooter,
+  modalForm,
   modalHeader,
-} from "../@modal/modal.css";
+} from "@/app/(beforeLogin)/_components/LoginModal/LoginModal.css";
+import { useRouter } from "next/navigation";
 
-export default function LoginModal() {
+const LoginModal = () => {
   const [id, setId] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
+  const router = useRouter();
   const onSubmit = () => {};
-  const onClickClose = () => {};
+  const onClickClose = () => {
+    router.back();
+  };
 
   const onChangeId = () => {};
 
   const onChangePassword = () => {};
-
   return (
     <div className={modalBackground}>
       <div className={modal}>
@@ -44,7 +47,7 @@ export default function LoginModal() {
           </button>
           <div>로그인하세요.</div>
         </div>
-        <form onSubmit={onSubmit}>
+        <form className={modalForm} onSubmit={onSubmit}>
           <div className={modalBody}>
             <div className={inputDiv}>
               <label className={inputLabel} htmlFor="id">
@@ -83,4 +86,6 @@ export default function LoginModal() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginModal;
